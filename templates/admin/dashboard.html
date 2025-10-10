@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        :root {
+            --bg: #f2f3f5;
+            --text: #222;
+            --card-bg: #ffffff;
+            --border: #ccc;
+            --btn-bg: #009688;
+            --btn-text: #fff;
+            --danger-bg: #e74c3c;
+            --danger-text: #fff;
+        }
+
+        body.dark {
+            --bg: #1e1e1e;
+            --text: #e0e0e0;
+            --card-bg: #2b2b2b;
+            --border: #555;
+            --btn-bg: #00bfa5;
+            --btn-text: #000;
+            --danger-bg: #c0392b;
+            --danger-text: #fff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        h2, h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: var(--btn-bg);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid var(--border);
+            margin: 20px 0;
+        }
+
+        .dark-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .dark-toggle:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Yangi mahsulot qo‘shish formasi */
+        .add-product-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            flex: 1 1 300px;
+            min-width: 280px;
+            transition: transform 0.3s;
+        }
+
+        .add-product-card:hover {
+            transform: scale(1.02);
+        }
+
+        .add-product-card form input,
+        .add-product-card form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .add-product-card form input:focus {
+            border-color: var(--btn-bg);
+        }
+
+        .add-product-card form button {
+            width: 100%;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-product-card form button:hover {
+            opacity: 0.8;
+        }
+
+        /* Mahsulotlar ro‘yxati */
+        .products-list {
+            flex: 2 1 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+
+        .product-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .actions button.delete {
+            background-color: var(--danger-bg);
+            color: var(--danger-text);
+        }
+
+        .actions button.delete:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .products-list {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="dark-toggle" onclick="toggleDark()">🌙 / ☀️</button>
+
+    <h2>Admin Panel</h2>
+    <a href="{% url 'home' %}">saytga qaytish</a>
+    <hr>
+
+    <div class="container">
+        <!-- Yangi mahsulot qo‘shish -->
+        <div class="add-product-card">
+            <h3>Yangi mahsulot qo‘shish</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Qo‘shish</button>
+            </form>
+        </div>
+
+        <!-- Barcha mahsulotlar -->
+        <div class="products-list">
+            <h3>Barcha mahsulotlar</h3>
+            {% for product in products %}
+                <div class="product-card">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="product-details">
+                        <p><b>{{ product.name }}</b> — {{ product.price }} so‘m</p>
+                        <div class="actions">
+                            <!-- Tahrirlash -->
+                            <form method="post" enctype="multipart/form-data" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="edit_id" value="{{ product.id }}">
+                                <input type="text" name="name" value="{{ product.name }}" required>
+                                <input type="number" name="price" value="{{ product.price }}" required>
+                                <input type="file" name="image">
+                                <button type="submit">✏️ Tahrirlash</button>
+                            </form>
+
+                            <!-- O‘chirish -->
+                            <form method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="delete_id" value="{{ product.id }}">
+                                <button type="submit" class="delete">🗑️ O‘chirish</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Mahsulot yo‘q.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        // 🔘 Tungi rejim toggle
+        const body = document.body;
+
+        function toggleDark() {
+            body.classList.toggle("dark");
+            localStorage.setItem("darkMode", body.classList.contains("dark"));
+        }
+
+        if (localStorage.getItem("darkMode") === "true") {
+            body.classList.add("dark");
+        }
+    </script>
+</body>
+</html>

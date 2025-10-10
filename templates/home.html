@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunarmand | Asl san’at mahsulotlari</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- 🧭 Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">🧶 Hunarmand</a>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <div class="links">
+            <a href="#home" data-uz="Bosh sahifa" data-ru="Главная" data-en="Home">Bosh sahifa</a>
+            <a href="#about" data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">Biz haqimizda</a>
+            <a href="#products" data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</a>
+            <a href="#contact" data-uz="Aloqa" data-ru="Контакты" data-en="Contact">Aloqa</a>
+            <a href="{% url 'admin_login' %}" data-uz="Admin" data-ru="Админ" data-en="Admin">Admin</a>
+        </div>
+        <select id="langSelect" style="margin-left:15px;padding:5px;border-radius:5px;">
+            <option value="uz">🇺🇿 UZ</option>
+            <option value="ru">🇷🇺 RU</option>
+            <option value="en">🇬🇧 ENG</option>
+        </select>
+        <button id="mode-toggle">🌙 / ☀️</button>
+    </nav>
+
+    <!-- 🖼 Hero -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1 data-uz="O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi"
+                data-ru="Узбекское ремесло — гармония древнего искусства и современного дизайна"
+                data-en="Uzbek craftsmanship — harmony of ancient art and modern design">
+                O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi
+            </h1>
+            <p data-uz="Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar."
+               data-ru="Уникальные изделия ручной работы, отражающие национальный дух."
+               data-en="Unique handmade products reflecting national spirit.">
+               Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar.
+            </p>
+            <a href="#products" class="btn"
+               data-uz="Mahsulotlarni ko‘rish" data-ru="Посмотреть продукты" data-en="View Products">
+               Mahsulotlarni ko‘rish
+            </a>
+        </div>
+        <img src="/media/doppi.jpg" class="hero-img" alt="Hunarmand">
+    </section>
+
+    <!-- 🙋‍♂️ About -->
+    <section class="about" id="about">
+        <h2 data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">Biz haqimizda</h2>
+        <p data-uz="Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar, nafislik va sifat mujassam. Buyurtmalarni alohida e’tibor bilan tayyorlayman."
+           data-ru="Я — ремесленник, любящий своё дело. В каждом изделии — национальные ценности, изящество и качество. Заказы выполняю с особым вниманием."
+           data-en="I am a passionate craftsman. Each of my products embodies national values, elegance, and quality. I prepare orders with special care.">
+           Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar, nafislik va sifat mujassam. Buyurtmalarni alohida e’tibor bilan tayyorlayman.
+        </p>
+
+        <div class="about-gallery">
+            <img src="/media/haqida.jpg" class="hero-img" alt="Hunarmand">
+            <img src="/media/haqida2.jpg" class="hero-img" alt="Hunarmand">
+            <img src="/media/photo_2025-10-10_11-54-19.jpg" class="hero-img" alt="Hunarmand">
+            <img src="/media/photo_2025-10-10_11-57-33.jpg" class="hero-img" alt="Hunarmand">
+            <img src="/media/photo_2025-10-10_11-57-38.jpg" class="hero-img" alt="Hunarmand">
+        </div>
+    </section>
+
+    <!-- 🧵 Products -->
+    <section class="products" id="products">
+        <h2 data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</h2>
+        <div class="product-container">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p class="desc">{{ product.description|truncatechars:80 }}</p>
+                <p><b>{{ product.price }} so‘m</b></p>
+                <button class="buy-btn" onclick="openModal('{{ product.id }}', '{{ product.name }}', '{{ product.price }}', '{{ product.image.url }}')"
+                        data-uz="🛒 Sotib olish" data-ru="🛒 Купить" data-en="🛒 Buy">
+                    🛒 Sotib olish
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- 📩 Contact -->
+    <section id="contact" class="contact">
+        <h2 id="murajat" data-uz="Murojaat uchun" data-ru="Контакты" data-en="Contact">Murojaat uchun</h2>
+        <p class="contact-text" data-uz="Quyidagi forma orqali biz bilan bog‘laning yoki taklif va savollaringizni yuboring."
+           data-ru="Свяжитесь с нами через форму ниже или отправьте свои предложения и вопросы."
+           data-en="Contact us via the form below or send your suggestions and questions.">
+           Quyidagi forma orqali biz bilan bog‘laning yoki taklif va savollaringizni yuboring.
+        </p>
+
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            {{ contact_form.as_p }}
+            <button type="submit" name="contact_submit" class="contact-btn"
+                    data-uz="Yuborish" data-ru="Отправить" data-en="Send">Yuborish</button>
+        </form>
+    </section>
+
+    <!-- 🧾 Modal (Mahsulot sotib olish) -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" data-uz="Buyurtma berish" data-ru="Сделать заказ" data-en="Order">Buyurtma berish</h3>
+            <img id="modalImage" src="" style="width:100%;border-radius:8px;margin-bottom:10px;">
+            <form id="orderForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" id="product_id" name="product_id">
+                <input type="text" name="first_name" placeholder="Ismingiz" required><br>
+                <input type="text" name="last_name" placeholder="Familiyangiz" required><br>
+                <input type="text" name="phone" placeholder="Telefon raqam" required><br>
+                <label><input type="checkbox" required> Taklif shartlariga roziman</label><br>
+                <button type="submit" class="btn" name="buy_product" data-uz="Yuborish" data-ru="Отправить" data-en="Send">Yuborish</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 🦶 Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Hunarmand.uz</h3>
+                <p data-uz="Mahalliy ustalar qo‘l mehnati mahsulotlari"
+                   data-ru="Продукция местных мастеров ручной работы"
+                   data-en="Local craftsmen handmade products">Mahalliy ustalar qo‘l mehnati mahsulotlari</p>
+            </div>
+            <div class="footer-links">
+                <p><strong>📍 Manzil:</strong> Namangan viloyati, Kosonsoy shahri</p>
+                <p><strong>📞 Telefon:</strong> <a href="tel:+998901234567">+998 97 520 62 88</a></p>
+                <p><strong>💬 Telegram:</strong> <a href="https://t.me/aliyarova_1998" target="_blank">Aliyarova</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Hunarmand.uz | Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <!-- 🌙 Script -->
+    <script>
+        const modeToggle = document.getElementById("mode-toggle");
+        const body = document.body;
+
+        // dark mode
+        modeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            localStorage.setItem("darkMode", body.classList.contains("dark"));
+        });
+
+        if (localStorage.getItem("darkMode") === "true") {
+            body.classList.add("dark");
+        }
+
+        // Modal
+        const modal = document.getElementById("buyModal");
+
+        function openModal(id, name, price, img) {
+            document.getElementById("modalTitle").innerText = name + " - " + price + " so‘m";
+            document.getElementById("modalImage").src = img;
+            document.getElementById("product_id").value = id;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(e) {
+            if (e.target == modal) closeModal();
+        };
+
+        // About gallery auto scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const gallery = document.querySelector(".about-gallery");
+
+            let scrollAmount = 0;
+            function autoScroll() {
+                if (gallery.scrollTop + gallery.clientHeight >= gallery.scrollHeight) {
+                    gallery.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                    gallery.scrollBy({ left: 1, behavior: "smooth" });
+                }
+            }
+
+            setInterval(autoScroll, 50);
+        });
+
+        // 🌐 Language selector
+        const langSelect = document.getElementById("langSelect");
+
+        function changeLanguage(lang) {
+            document.querySelectorAll("[data-uz]").forEach(el => {
+                el.innerText = el.getAttribute("data-" + lang);
+            });
+            localStorage.setItem("siteLang", lang);
+        }
+
+        const savedLang = localStorage.getItem("siteLang") || "uz";
+        langSelect.value = savedLang;
+        changeLanguage(savedLang);
+
+        langSelect.addEventListener("change", (e) => {
+            changeLanguage(e.target.value);
+        });
+        function toggleMenu() {
+            document.querySelector('.navbar').classList.toggle('active');
+        }
+
+    </script>
+
+</body>
+</html>
