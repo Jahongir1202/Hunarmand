@@ -21,3 +21,18 @@ modeToggle.addEventListener('click', () => {
 if (localStorage.getItem('darkMode') === 'true') {
     body.classList.add('dark');
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+        question.addEventListener("click", () => {
+            item.classList.toggle("active");
+
+            // boshqa ochilganlarni yopish
+            faqItems.forEach(other => {
+                if (other !== item) other.classList.remove("active");
+            });
+        });
+    });
+});
