@@ -15,21 +15,23 @@
     <nav class="navbar">
         <div class="logo">
             <a href="/">🧶 Hunarmand</a>
-        </div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            
+        </div>
         <div class="links">
             <a href="#home" data-uz="Bosh sahifa" data-ru="Главная" data-en="Home">Bosh sahifa</a>
             <a href="#about" data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">Biz haqimizda</a>
             <a href="#products" data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</a>
             <a href="#contact" data-uz="Aloqa" data-ru="Контакты" data-en="Contact">Aloqa</a>
             <a href="{% url 'admin_login' %}" data-uz="Admin" data-ru="Админ" data-en="Admin">Admin</a>
+            <button class="mode-toggle" id="mode-toggle"></button>
         </div>
         <select id="langSelect" style="margin-left:15px;padding:15px;border-radius:5px;">
             <option value="uz">🇺🇿 UZ</option>
             <option value="ru">🇷🇺 RU</option>
             <option value="en">🇬🇧 ENG</option>
         </select>
-        <button class="mode-toggle" id="mode-toggle"></button>
+        
     </nav>
 
     <!-- 🖼 Hero -->

@@ -1003,32 +1003,43 @@ body.dark .modal-content {
 }
 
 .special-container {
-  flex-direction: column;
-  gap: 40px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
+/* ==== RASMLAR ==== */
 .special-images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1;
   position: relative;
+  min-width: 300px;
 }
 
 .special-images .img-main {
-  width: 80%;
-  height: auto;
-  transform: none;
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: rotate(-3deg);
 }
 
 .special-images .img-overlay {
-  position: relative;
-  top: -40px;
-  left: 0;
-  width: 70%;
-  height: auto;
-  transform: none;
-  border: 4px solid #fff;
+  position: absolute;
+  top: 60px;
+  left: 180px;
+  width: 280px;
+  height: 370px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 6px solid #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: rotate(4deg);
+  transition: all 0.4s ease;
 }
 
 .special-images:hover .img-overlay {
@@ -1105,8 +1116,8 @@ body.dark .modal-content {
 
   .special-images .img-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 5%;
+    left: 40%;  
     transform: translate(-30%, -10%) rotate(4deg);
   }
 
@@ -1258,9 +1269,8 @@ body.dark .modal-content {
 
 /* 🔘 Mode tugma uslubi */
 #mode-toggle {
-  position:static;
-  top: 20px;
-  right: 25px;
+  /* top: 20px; */
+  right: 125px;
   background: #fff;
   color: #222;
   border: none;
@@ -1268,7 +1278,7 @@ body.dark .modal-content {
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   z-index: 999;
 }
@@ -1276,7 +1286,7 @@ body.dark .modal-content {
 .dark #mode-toggle {
   background: #222;
   color: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 /* 🌑 Dark rejim faqat shu bo‘limlarga ta’sir qiladi */
