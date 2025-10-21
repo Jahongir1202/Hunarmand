@@ -17,6 +17,10 @@ modeToggle.addEventListener('click', () => {
     localStorage.setItem('darkMode', body.classList.contains('dark'));
 });
 
+// LocalStorage’dan dark mode holatini tekshirish
+
+
+
 // sahifa yangilanganda ham holatni saqlash
 if (localStorage.getItem('darkMode') === 'true') {
     body.classList.add('dark');

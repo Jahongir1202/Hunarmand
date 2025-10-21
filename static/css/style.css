@@ -48,7 +48,7 @@ body {
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
-  font-size: 28px;
+  font-size: 18px;
   /* oldingi 14-15px dan kattaroq */
   padding: 10px 12px;
   /* tepa-past, chap-o‘ngdan joy ochadi */
@@ -1265,4 +1265,84 @@ body.dark .modal-content {
   .faq-content {
     text-align: center;
   }
+}
+
+/* 🔘 Mode tugma uslubi */
+#mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  background: #fff;
+  color: #222;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.dark #mode-toggle {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* 🌑 Dark rejim faqat shu bo‘limlarga ta’sir qiladi */
+.dark #crafts,
+.dark #special,
+.dark #faq {
+  background-color: #111;
+  color: #f2f2f2;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Sarlavhalar */
+.dark #crafts h2,
+.dark #special h2,
+.dark #faq h2 {
+  color: #fff;
+}
+
+/* Matnlar */
+.dark #crafts p,
+.dark #special p,
+.dark #faq p {
+  color: #ddd;
+}
+
+/* Ro‘yxatlar */
+.dark #special .features li {
+  color: #ccc;
+}
+
+/* Rasmlar */
+.dark #crafts img,
+.dark #special img,
+.dark #faq img {
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+/* FAQ */
+.dark .faq-question {
+  background: #1e1e1e;
+  color: #f9f9f9;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.dark .faq-question:hover {
+  background: #2a2a2a;
+}
+
+.dark .faq-answer {
+  background: #181818;
+  border-left: 3px solid #444;
+  color: #ddd;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 8px;
 }

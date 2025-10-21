@@ -29,7 +29,7 @@
             <option value="ru">🇷🇺 RU</option>
             <option value="en">🇬🇧 ENG</option>
         </select>
-        <button id="mode-toggle">🌙 / ☀️</button>
+        <button id="mode-toggle"></button>
     </nav>
 
     <!-- 🖼 Hero -->
@@ -87,7 +87,7 @@
                 </p>
             </div>
             <div class="crafts-image">
-                <img src="/media/haqida2.jpg" alt="Qo‘l mehnati bilan yaratilgan buyumlar">
+                <img src="/media/doppi5.jpg" alt="Qo‘l mehnati bilan yaratilgan buyumlar">
             </div>
         </div>
     </section>
@@ -114,8 +114,8 @@
     <section id="special" class="special-section">
         <div class="special-container">
             <div class="special-images">
-                <img src="/media/haqida2.jpg" alt="Qo‘l mehnati 1" class="img-main">
-                <img src="/media/doppi.jpg" alt="Qo‘l mehnati 2" class="img-overlay">
+                <img src="/media/sert.jpg" alt="Qo‘l mehnati 1" class="img-main">
+                <img src="/media/d2.jpg" alt="Qo‘l mehnati 2" class="img-overlay">
             </div>
             <div class="special-text">
                 <h2 data-uz="Sizga mos maxsus qo‘l mehnati va dizaynlar"
@@ -143,7 +143,7 @@
     <section id="faq" class="faq-section">
         <div class="faq-container">
             <div class="faq-image">
-                <img src="/media/doppi.jpg" alt="Doppi" />
+                <img src="/media/zarg.JPG" alt="Doppi" />
             </div>
             <div class="faq-content">
                 <h2 data-uz="Ko‘p so‘raladigan savollar" data-ru="Часто задаваемые вопросы"
@@ -268,8 +268,23 @@
 
     <!-- 🌙 Script -->
     <script>
+        // 🌙 / ☀️ Dark Mode
         const modeToggle = document.getElementById("mode-toggle");
         const body = document.body;
+        // Tugma bosilganda rejimni almashtirish
+        modeToggle.addEventListener("click", () => {
+            localStorage.setItem("darkMode", darkNow);
+            modeToggle.textContent = darkNow ? "☀️" : "🌙";
+        });
+
+        const isDark = localStorage.getItem("darkMode") === "true";
+        if (isDark) {
+            body.classList.add("dark");
+            modeToggle.textContent = "☀️"; // quyosh belgisi (hozir dark rejim)
+        } else {
+            body.classList.remove("dark");
+            modeToggle.textContent = "🌙"; // oy belgisi (yorug‘ rejim)
+        }
 
         // dark mode
         modeToggle.addEventListener("click", () => {
@@ -280,6 +295,7 @@
         if (localStorage.getItem("darkMode") === "true") {
             body.classList.add("dark");
         }
+
 
         // Modal
         const modal = document.getElementById("buyModal");
