@@ -130,3 +130,6 @@ def admin_dashboard(request):
         form = ProductForm()
 
     return render(request, 'admin/dashboard.html', {'form': form, 'products': products})
+
+def HomeView(request):
+    return render(request, 'index.html')

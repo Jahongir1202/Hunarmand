@@ -1,99 +1,213 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="uz">
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hunarmand | Asl san’at mahsulotlari</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../static/css/tiny-slider.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 </head>
 
 <body>
+    <style>
+        .lang-dropdown {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
 
-    <!-- 🧭 Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="/">🧶 Hunarmand</a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        .lang-dropdown option {
+            background-color: #00796b;
+            color: white;
+        }
 
+        .lang-dropdown:focus {
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background-color: #3b5d50;
+                /* navbar foniga mos */
+                padding: 1rem;
+            }
+
+            .lang-dropdown {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .custom-navbar-nav {
+                text-align: center;
+            }
+
+            .nav-item {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+    <!-- Start Header/Navigation -->
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Hunarmand navigation bar">
+        <div class="container-fluid px-3">
+            <a class="navbar-brand" href="#">Hunarmand<span>.</span></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsHunarmand">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsHunarmand">
+                <div class="ms-3 nav-item text-center">
+                    <select id="languageSelect" class="lang-dropdown">
+                        <option value="uz">🇺🇿 O‘zb</option>
+                        <option value="ru">🇷🇺 Рус</option>
+                        <option value="en">🇬🇧 Eng</option>
+                    </select>
+                </div>
+                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 text-center">
+                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Bosh sahifa" data-ru="Главная"
+                            data-en="Home">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Biz haqimizda" data-ru="О нас"
+                            data-en="About">Biz haqimizda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Mahsulotlar" data-ru="Продукты"
+                            data-en="Products">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Blog" data-ru="Блог"
+                            data-en="Blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Aloqa" data-ru="Контакты"
+                            data-en="Contact">Aloqa</a></li>
+                </ul>
+
+                <!-- 🌍 Til tanlash -->
+
+            </div>
         </div>
-        <div class="links">
-            <a href="#home" data-uz="Bosh sahifa" data-ru="Главная" data-en="Home">Bosh sahifa</a>
-            <a href="#about" data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">Biz haqimizda</a>
-            <a href="#products" data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</a>
-            <a href="#contact" data-uz="Aloqa" data-ru="Контакты" data-en="Contact">Aloqa</a>
-            <a href="{% url 'admin_login' %}" data-uz="Admin" data-ru="Админ" data-en="Admin">Admin</a>
-            <button class="mode-toggle" id="mode-toggle"></button>
-        </div>
-        <select id="langSelect" style="margin-left:15px;padding:15px;border-radius:5px;">
-            <option value="uz">🇺🇿 UZ</option>
-            <option value="ru">🇷🇺 RU</option>
-            <option value="en">🇬🇧 ENG</option>
-        </select>
-
     </nav>
 
-    <!-- 🖼 Hero -->
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <h1 data-uz="O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi"
-                data-ru="Узбекское ремесло — гармония древнего искусства и современного дизайна"
-                data-en="Uzbek craftsmanship — harmony of ancient art and modern design">
-                O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi
-            </h1>
-            <p data-uz="Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar."
-                data-ru="Уникальные изделия ручной работы, отражающие национальный дух."
-                data-en="Unique handmade products reflecting national spirit.">
-                Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar.
-            </p>
-            <a href="#products" class="btn" data-uz="Mahsulotlarni ko‘rish" data-ru="Посмотреть продукты"
-                data-en="View Products">
-                Mahsulotlarni ko‘rish
-            </a>
-        </div>
-        <img src="/media/doppi.jpg" class="hero-img" alt="Hunarmand">
-    </section>
+    <!-- End Header/Navigation -->
 
-    <!-- 🙋‍♂️ About -->
-    <section class="about" id="about">
-        <h2 data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">Biz haqimizda</h2>
-        <p data-uz="Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar, nafislik va sifat mujassam. Buyurtmalarni alohida e’tibor bilan tayyorlayman."
-            data-ru="Я — ремесленник, любящий своё дело. В каждом изделии — национальные ценности, изящество и качество. Заказы выполняю с особым вниманием."
-            data-en="I am a passionate craftsman. Each of my products embodies national values, elegance, and quality. I prepare orders with special care.">
-            Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar, nafislik va sifat mujassam.
-            Buyurtmalarni alohida e’tibor bilan tayyorlayman.
-        </p>
+    <!-- Start Hero Section -->
+    <div class="hero py-5">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <!-- 🟢 Har bir matnga 3 tildagi versiya qo‘shamiz -->
+                        <h1 data-uz="O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi"
+                            data-ru="Узбекское ремесло — гармония древнего искусства и современного дизайна"
+                            data-en="Uzbek craftsmanship — a harmony of ancient art and modern design">
+                            O‘zbek hunarmandchiligi — qadimiy san’at va zamonaviy dizayn uyg‘unligi
+                        </h1>
 
-        <div class="about-gallery">
-            <img src="/media/haqida.jpg" class="hero-img" alt="Hunarmand">
-            <img src="/media/haqida2.jpg" class="hero-img" alt="Hunarmand">
-            <img src="/media/photo_2025-10-10_11-54-19.jpg" class="hero-img" alt="Hunarmand">
-            <img src="/media/photo_2025-10-10_11-57-33.jpg" class="hero-img" alt="Hunarmand">
-            <img src="/media/photo_2025-10-10_11-57-38.jpg" class="hero-img" alt="Hunarmand">
-        </div>
-    </section>
-    <section id="crafts" class="crafts-section">
-        <div class="crafts-content">
-            <div class="crafts-text">
-                <h2 data-uz="Qo‘l mehnati bilan yaratilgan betakror buyumlar" data-ru="Уникальные изделия ручной работы"
-                    data-en="Unique handmade creations">
-                    Qo‘l mehnati bilan yaratilgan betakror buyumlar
-                </h2>
-                <p data-uz="Biz — 50 yildan ortiq tajribamiz asosida milliy Doʻpichilik san'ati asosida tayyorlangan 200 dan ortiq mahsulotlarimizni mamlakatimizdagi va chet ellik mijozlarimizga taqdim qilib kelmoqdamiz"
-                    data-ru="Мы предлагаем нашим отечественным и зарубежным клиентам более 200 наименований продукции, изготовленной на основе национального искусства изготовления наркотиков, опираясь на наш более чем 50-летний опыт."
-                    data-en="We are offering more than 200 products made based on the national art of dope making to our domestic and foreign customers, based on our more than 50 years of experience.">
-                    Biz — 50 yildan ortiq tajribamiz asosida milliy Doʻpichilik san'ati asosida tayyorlangan 200 dan
-                    ortiq mahsulotlarimizni mamlakatimizdagi va chet ellik mijozlarimizga taqdim qilib kelmoqdamiz
-                </p>
-            </div>
-            <div class="crafts-image">
-                <img src="/media/doppi5.jpg" alt="Qo‘l mehnati bilan yaratilgan buyumlar">
+                        <p class="mb-4"
+                            data-uz="Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar."
+                            data-ru="Уникальные изделия, созданные вручную и отражающие национальный дух."
+                            data-en="Unique handmade products reflecting the national spirit.">
+                            Qo‘l mehnati bilan yaratilgan, milliy ruhni aks ettiruvchi noyob mahsulotlar.
+                        </p>
+
+                        <p>
+                            <a href="#" class="btn btn-secondary me-2" data-uz="Mahsulotlar" data-ru="Продукты"
+                                data-en="Products">
+                                Mahsulotlar
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 text-center">
+                    <div class="hero-img-wrap">
+                        <img src="../media/scullcap-removebg-preview.png" class="img-fluid" alt="Hunarmand Image">
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- End Hero Section -->
 
-    <!-- 🧵 Products -->
+    <!-- Start Product Section -->
+    <!-- === Biz haqimizda bo‘limi === -->
+    <div class="product-section py-5">
+        <div class="container">
+            <div class="row">
+
+                <!-- Start Column 1 -->
+                <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+                    <h2 class="mb-4 section-title" data-uz="Biz haqimizda" data-ru="О нас" data-en="About Us">
+                        Biz haqimizda
+                    </h2>
+
+                    <p class="mb-4"
+                        data-uz="Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar, nafislik va sifat mujassam. Buyurtmalarni alohida e’tibor bilan tayyorlayman."
+                        data-ru="Я мастер, который любит свое дело. В каждом изделии отражены национальные ценности, утонченность и качество. Каждый заказ готовлю с особым вниманием."
+                        data-en="I am a craftsman who loves my work. Each product reflects national values, elegance, and quality. I prepare every order with special attention.">
+                        Men — o‘z ishini sevgan hunarmandman. Har bir mahsulotimda milliy qadriyatlar,
+                        nafislik va sifat mujassam. Buyurtmalarni alohida e’tibor bilan tayyorlayman.
+                    </p>
+                </div>
+                <!-- End Column 1 -->
+
+                <!-- Start Column 2 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="#">
+                        <img src="/media/haqida2.jpg" class="img-fluid product-thumbnail" alt="Product 1">
+                        <h3 class="product-title" data-uz="Nordik stul" data-ru="Скандинавский стул"
+                            data-en="Nordic Chair">
+                            Nordic Chair
+                        </h3>
+                    </a>
+                </div>
+                <!-- End Column 2 -->
+
+                <!-- Start Column 3 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="#">
+                        <img src="/media/haqida.jpg" class="img-fluid product-thumbnail" alt="Product 2">
+                        <h3 class="product-title" data-uz="Kruzo Aero stul" data-ru="Крузо Аэро стул"
+                            data-en="Kruzo Aero Chair">
+                            Kruzo Aero Chair
+                        </h3>
+                    </a>
+                </div>
+                <!-- End Column 3 -->
+
+                <!-- Start Column 4 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="#">
+                        <img src="/media/photo_2025-10-10_11-54-19.jpg" class="img-fluid product-thumbnail"
+                            alt="Product 3">
+                        <h3 class="product-title" data-uz="Ergonomik stul" data-ru="Эргономичный стул"
+                            data-en="Ergonomic Chair">
+                            Ergonomic Chair
+                        </h3>
+                    </a>
+                </div>
+                <!-- End Column 4 -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End Product Section -->
     <section class="products" id="products">
         <h2 data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</h2>
         <div class="product-container">
@@ -112,35 +226,101 @@
             {% endfor %}
         </div>
     </section>
-    <section id="special" class="special-section">
-        <div class="special-container">
-            <div class="special-images">
-                <img src="/media/sert.jpg" alt="Qo‘l mehnati 1" class="img-main">
-                <img src="/media/d2.jpg" alt="Qo‘l mehnati 2" class="img-overlay">
-            </div>
-            <div class="special-text">
-                <h2 data-uz="Sizga mos maxsus qo‘l mehnati va dizaynlar"
-                    data-ru="Индивидуальные изделия ручной работы и дизайны"
-                    data-en="Custom handmade art and designs for you">
-                    Sizga mos maxsus qo‘l mehnati va dizaynlar
-                </h2>
-                <p class="subtitle"
-                    data-uz="2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz"
-                    data-ru="С 2010 года: мы занимали почётные места на мероприятиях ЮНЕСКО и местных выставках"
-                    data-en="Since 2010: proud participant and winner at UNESCO and local art events">
-                    2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz
-                </p>
-                <ul class="features">
-                    <li data-uz="Ko‘p yillik tajriba" data-ru="Многолетний опыт" data-en="Years of experience">Ko‘p
-                        yillik tajriba</li>
-                    <li data-uz="Professional ijodkorlar" data-ru="Профессиональные мастера"
-                        data-en="Professional creators">Professional ijodkorlar</li>
-                    <li data-uz="Qulay narxlar" data-ru="Доступные цены" data-en="Affordable prices">Qulay narxlar</li>
-                </ul>
+    <!-- Start Why Choose Us Section -->
+    <div class="why-choose-section py-5">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+
+                <!-- Chap qism -->
+                <div class="col-lg-6">
+                    <h2 class="section-title" data-uz="Sizga mos maxsus qo‘l mehnati va dizaynlar"
+                        data-ru="Индивидуальные ручные изделия и уникальный дизайн"
+                        data-en="Custom handcrafted designs made for you">
+                        Sizga mos maxsus qo‘l mehnati va dizaynlar
+                    </h2>
+
+                    <p data-uz="2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz"
+                        data-ru="С 2010 года: занимаем почётные места на мероприятиях ЮНЕСКО и местных фестивалях"
+                        data-en="Since 2010: proudly featured in UNESCO and local events">
+                        2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz
+                    </p>
+
+                    <div class="row my-5">
+
+                        <!-- 1 -->
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="../media/truck.svg" alt="Image" class="img-fluid">
+                                </div>
+                                <p data-uz="Bizda milliy uslubda tayyorlangan doppi va nafis zargarlik taqinchoqlari mavjud. Har biri qo‘l mehnati bilan yaratilgan."
+                                    data-ru="У нас есть тюбетейки и изысканные ювелирные изделия, выполненные в национальном стиле. Каждое изделие — ручная работа."
+                                    data-en="We offer skullcaps and fine jewelry crafted in national style. Each piece is handmade.">
+                                    Bizda milliy uslubda tayyorlangan doppi va nafis zargarlik taqinchoqlari mavjud. Har
+                                    biri qo‘l mehnati bilan yaratilgan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 2 -->
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="../media/bag.svg" alt="Image" class="img-fluid">
+                                </div>
+                                <p data-uz="Bizda milliy uslubda tayyorlangan doppi va nafis zargarlik taqinchoqlari mavjud. Har biri qo‘l mehnati bilan yaratilgan."
+                                    data-ru="У нас есть тюбетейки и изысканные ювелирные изделия, выполненные в национальном стиле. Каждое изделие — ручная работа."
+                                    data-en="We offer skullcaps and fine jewelry crafted in national style. Each piece is handmade.">
+                                    Bizda milliy uslubda tayyorlangan doppi va nafis zargarlik taqinchoqlari mavjud. Har
+                                    biri qo‘l mehnati bilan yaratilgan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 3 -->
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="../media/support.svg" alt="Image" class="img-fluid">
+                                </div>
+                                <p data-uz="Biz to‘y, tadbir va bayramlar uchun katta hajmdagi buyurtmalarni ham qabul qilamiz."
+                                    data-ru="Мы принимаем крупные заказы на свадьбы, мероприятия и праздники."
+                                    data-en="We also accept large orders for weddings, events, and celebrations.">
+                                    Biz to‘y, tadbir va bayramlar uchun katta hajmdagi buyurtmalarni ham qabul qilamiz.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 4 -->
+                        <div class="col-6 col-md-6">
+                            <div class="feature">
+                                <div class="icon">
+                                    <img src="../media/return.svg" alt="Image" class="img-fluid">
+                                </div>
+                                <p data-uz="To‘lovlar Click, Payme yoki naqd pul orqali amalga oshiriladi. Har bir mijoz uchun qulay usul tanlash imkoniyati mavjud."
+                                    data-ru="Оплата возможна через Click, Payme или наличными. Для каждого клиента — удобный способ."
+                                    data-en="Payments can be made via Click, Payme, or cash. Every customer can choose a convenient method.">
+                                    To‘lovlar Click, Payme yoki naqd pul orqali amalga oshiriladi. Har bir mijoz uchun
+                                    qulay usul tanlash imkoniyati mavjud.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- O‘ng qism -->
+                <div class="col-lg-5 text-center">
+                    <div class="img-wrap">
+                        <img src="../media/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
 
+    <!-- End Why Choose Us Section -->
     <section id="faq" class="faq-section">
         <div class="faq-container">
             <div class="faq-image">
@@ -209,7 +389,75 @@
             </div>
         </div>
     </section>
+    <!-- Start We Help Section -->
+    <div class="we-help-section py-5">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
 
+                <!-- 🖼 Chapdagi rasmlar -->
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="imgs-grid">
+                        <div class="grid grid-1">
+                            <img src="../media/111.jpeg" alt="Hunarmand Image 1" class="img-fluid">
+                        </div>
+                        <div class="grid grid-2">
+                            <img src="../media/777.jpeg" alt="Hunarmand Image 2" class="img-fluid">
+                        </div>
+                        <div class="grid grid-3">
+                            <img src="../media/cet.jpeg" alt="Hunarmand Image 3" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📄 O‘ngdagi matn -->
+                <div class="col-lg-5 ps-lg-5">
+                    <h2 class="section-title mb-4" data-uz="Qo‘l mehnati bilan yaratilgan betakror buyumlar"
+                        data-ru="Уникальные изделия, созданные вручную" data-en="Unique handcrafted creations">
+                        Qo‘l mehnati bilan yaratilgan betakror buyumlar
+                    </h2>
+
+                    <p data-uz="Biz — 50 yildan ortiq tajribamiz asosida milliy do‘ppichilik san’ati asosida tayyorlangan 200 dan ortiq mahsulotlarimizni mamlakatimizdagi va chet ellik mijozlarimizga taqdim qilib kelmoqdamiz."
+                        data-ru="Мы более 50 лет создаём более 200 видов изделий на основе национального искусства тюбетейк, предлагая их клиентам в Узбекистане и за рубежом."
+                        data-en="For over 50 years, we have been crafting more than 200 handmade skullcap-based items for local and international clients.">
+                        Biz — 50 yildan ortiq tajribamiz asosida milliy do‘ppichilik san’ati asosida tayyorlangan 200
+                        dan ortiq mahsulotlarimizni mamlakatimizdagi va chet ellik mijozlarimizga taqdim qilib
+                        kelmoqdamiz.
+                    </p>
+
+                    <ul class="list-unstyled custom-list my-4">
+                        <li data-uz="2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz"
+                            data-ru="С 2010 года: занимаем почётные места на мероприятиях ЮНЕСКО и местных фестивалях"
+                            data-en="Since 2010: proudly featured in UNESCO and local events">
+                            2010 yildan beri: Yunesko va mahalliy tadbirlarda faxrli o‘rinlarni egallab kelmoqdamiz
+                        </li>
+
+                        <li data-uz="Ko‘p yillik tajriba" data-ru="Многолетний опыт" data-en="Years of experience">
+                            Ko‘p yillik tajriba
+                        </li>
+
+                        <li data-uz="Professional ijodkorlar" data-ru="Профессиональные мастера"
+                            data-en="Professional artisans">
+                            Professional ijodkorlar
+                        </li>
+
+                        <li data-uz="Qulay narxlar" data-ru="Доступные цены" data-en="Affordable prices">
+                            Qulay narxlar
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End We Help Section -->
+
+    <!-- Start Popular Product -->
+
+    <!-- End Popular Product -->
+
+    <!-- Start Testimonial Slider -->
+
+    <!-- End Testimonial Slider -->
     <!-- 📩 Contact -->
     <section id="contact" class="contact">
         <h2 id="murajat" data-uz="Murojat uchun" data-ru="Контакты" data-en="Contact">Murojaat uchun</h2>
@@ -246,61 +494,115 @@
             </form>
         </div>
     </div>
+    <!-- Start Blog Section -->
+        
+    <!-- End Blog Section -->
 
-    <!-- 🦶 Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <h3>Hunarmand.uz</h3>
-                <p data-uz="Mahalliy ustalar qo‘l mehnati mahsulotlari"
-                    data-ru="Продукция местных мастеров ручной работы" data-en="Local craftsmen handmade products">
-                    Mahalliy ustalar qo‘l mehnati mahsulotlari</p>
+    <!-- Start Footer Section -->
+    <footer style="background-color: #3b5d50;" class="footer-section">
+        <div class="container relative">
+            <div class="sofa-img">
+                <img src="../media/scullcap-removebg-preview.png" alt="Hunarmand" class="img-fluid">
             </div>
-            <div class="footer-links">
-                <p><strong>📍 Manzil:</strong> Namangan viloyati, Kosonsoy shahri</p>
-                <p><strong>📞 Telefon:</strong> <a href="tel:+998901234567">+998 97 520 62 88</a></p>
-                <p><strong>✈️ Telegram:</strong> <a href="https://t.me/aliyarova_1998" target="_blank">Aliyarova</a></p>
-                <p><strong>📸 Intagram:</strong> <a href="https://www.instagram.com/aliyarova_1988" target="_blank">Aliyarova</a></p>
 
+            <div class="row g-5 mb-5">
+                <div class="col-lg-4">
+                    <div class="mb-4 footer-logo-wrap">
+                        <a href="#" class="footer-logo">Hunarmand<span>.uz</span></a>
+                    </div>
+                    <p class="mb-4"
+                        data-uz="Mahalliy ustalar tomonidan yaratilgan noyob va sifatli qo‘l mehnati mahsulotlarini toping. Hunarmand.uz sizni eng yaxshi ustalar bilan bog‘laydi."
+                        data-ru="Найдите уникальные и качественные изделия ручной работы, созданные местными мастерами. Hunarmand.uz соединяет вас с лучшими мастерами."
+                        data-en="Find unique, high-quality handmade products created by local artisans. Hunarmand.uz connects you with the best masters.">
+                        Mahalliy ustalar tomonidan yaratilgan noyob va sifatli qo‘l mehnati mahsulotlarini toping.
+                        Hunarmand.uz sizni eng yaxshi ustalar bilan bog‘laydi.
+                    </p>
+
+                    <ul class="list-unstyled custom-social">
+                        <li><a href="http://t.me/aliyarovaazizaxon"><span class="fa fa-brands fa-telegram"></span></a></li>
+                        <li><a href="https://www.instagram.com/aliyarova_craft"><span class="fa fa-brands fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row links-wrap">
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                <li><a href="#" data-uz="Biz haqimizda" data-ru="О нас" data-en="About us">Biz
+                                        haqimizda</a></li>
+                                <li><a href="#" data-uz="Xizmatlar" data-ru="Услуги" data-en="Services">Xizmatlar</a>
+                                </li>
+                                <li><a href="#" data-uz="Yangiliklar" data-ru="Новости" data-en="News">Yangiliklar</a>
+                                </li>
+                                <li><a href="#" data-uz="Bog‘lanish" data-ru="Контакты" data-en="Contact">Bog‘lanish</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                <li><a href="#" data-uz="Yordam markazi" data-ru="Центр помощи"
+                                        data-en="Help Center">Yordam markazi</a></li>
+                                <li><a href="#" data-uz="Savol-javoblar" data-ru="Вопросы и ответы"
+                                        data-en="FAQ">Savol-javoblar</a></li>
+                                <li><a href="#" data-uz="Jonli aloqa" data-ru="Живой чат" data-en="Live chat">Jonli
+                                        aloqa</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                <li><a href="#" data-uz="Bo‘sh ish o‘rinlari" data-ru="Вакансии" data-en="Careers">Bo‘sh
+                                        ish o‘rinlari</a></li>
+                                <li><a href="#" data-uz="Bizning jamoa" data-ru="Наша команда"
+                                        data-en="Our team">Bizning jamoa</a></li>
+                                <li><a href="#" data-uz="Rahbariyat" data-ru="Руководство"
+                                        data-en="Management">Rahbariyat</a></li>
+                                <li><a href="#" data-uz="Maxfiylik siyosati" data-ru="Политика конфиденциальности"
+                                        data-en="Privacy Policy">Maxfiylik siyosati</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                <li><strong data-uz="📍 Manzil:" data-ru="📍 Адрес:" data-en="📍 Address:">📍
+                                        Manzil:</strong></li>
+                                <li><a href="#" data-uz="Namangan viloyati, Kosonsoy shahri"
+                                        data-ru="Наманганская область, город Косонсой"
+                                        data-en="Namangan region, Kosonsoy city">Namangan viloyati, Kosonsoy shahri</a>
+                                </li>
+                                <li><a href="#" data-uz="📞 Telefon: +998 97 520 62 88"
+                                        data-ru="📞 Телефон: +998 97 520 62 88" data-en="📞 Phone: +998 97 520 62 88">📞
+                                        Telefon: +998 97 520 62 88</a></li>
+                               </ul>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Hunarmand.uz | Barcha huquqlar himoyalangan.</p>
+
+            <div class="border-top copyright">
+                <div class="row pt-4">
+                    <div class="col-lg-6">
+                        <p class="mb-2 text-center text-lg-start"
+                            data-uz="© 2025 Hunarmand.uz | Barcha huquqlar himoyalangan."
+                            data-ru="© 2025 Hunarmand.uz | Все права защищены."
+                            data-en="© 2025 Hunarmand.uz | All rights reserved.">
+                            © 2025 Hunarmand.uz | Barcha huquqlar himoyalangan.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- 🌙 Script -->
+
+
+    <!-- End Footer Section -->
+
     <script>
-        // 🌙 / ☀️ Dark Mode
-        const modeToggle = document.getElementById("mode-toggle");
-        const body = document.body;
-        // Tugma bosilganda rejimni almashtirish
-        modeToggle.addEventListener("click", () => {
-            localStorage.setItem("darkMode", darkNow);
-            modeToggle.textContent = darkNow ? "☀️" : "🌙";
-        });
-
-        const isDark = localStorage.getItem("darkMode") === "true";
-        if (isDark) {
-            body.classList.add("dark");
-            modeToggle.textContent = "☀️"; // quyosh belgisi (hozir dark rejim)
-        } else {
-            body.classList.remove("dark");
-            modeToggle.textContent = "🌙"; // oy belgisi (yorug‘ rejim)
-        }
-
-        // dark mode
-        modeToggle.addEventListener("click", () => {
-            body.classList.toggle("dark");
-            localStorage.setItem("darkMode", body.classList.contains("dark"));
-        });
-
-        if (localStorage.getItem("darkMode") === "true") {
-            body.classList.add("dark");
-        }
-
-
-        // Modal
         const modal = document.getElementById("buyModal");
 
         function openModal(id, name, price, img) {
@@ -314,64 +616,45 @@
             modal.style.display = "none";
         }
 
-        window.onclick = function (e) {
-            if (e.target == modal) closeModal();
-        };
-
-        // About gallery auto scroll
-        document.addEventListener("DOMContentLoaded", () => {
-            const gallery = document.querySelector(".about-gallery");
-
-            let scrollAmount = 0;
-            function autoScroll() {
-                if (gallery.scrollTop + gallery.clientHeight >= gallery.scrollHeight) {
-                    gallery.scrollTo({ top: 0, behavior: "smooth" });
-                } else {
-                    gallery.scrollBy({ left: 1, behavior: "smooth" });
-                }
+        // Foydalanuvchi modal tashqarisiga bossachi?
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
             }
+        };
+        const select = document.getElementById("languageSelect");
+        const allText = document.querySelectorAll("[data-uz]");
 
-            setInterval(autoScroll, 50);
-        });
-
-        // 🌐 Language selector
-        const langSelect = document.getElementById("langSelect");
-
-        function changeLanguage(lang) {
-            document.querySelectorAll("[data-uz]").forEach(el => {
-                el.innerText = el.getAttribute("data-" + lang);
+        function applyLanguage(lang) {
+            allText.forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
             });
-            localStorage.setItem("siteLang", lang);
+            localStorage.setItem("selectedLang", lang);
+            select.value = lang;
         }
 
-        const savedLang = localStorage.getItem("siteLang") || "uz";
-        langSelect.value = savedLang;
-        changeLanguage(savedLang);
-
-        langSelect.addEventListener("change", (e) => {
-            changeLanguage(e.target.value);
+        select.addEventListener("change", () => {
+            applyLanguage(select.value);
         });
-        function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
-        }
-        document.addEventListener("DOMContentLoaded", function () {
-            const faqItems = document.querySelectorAll(".faq-item");
 
-            faqItems.forEach(item => {
-                const question = item.querySelector(".faq-question");
-                question.addEventListener("click", () => {
-                    item.classList.toggle("active");
-
-                    // boshqa ochilganlarni yopish
-                    faqItems.forEach(other => {
-                        if (other !== item) other.classList.remove("active");
-                    });
-                });
-            });
-        });
+        const savedLang = localStorage.getItem("selectedLang") || "uz";
+        applyLanguage(savedLang);
 
     </script>
 
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/tiny-slider.js"></script>
+    <script src="../static/js/custom.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+</body>
