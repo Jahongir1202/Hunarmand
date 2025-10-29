@@ -84,15 +84,15 @@
                     </select>
                 </div>
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 text-center">
-                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Bosh sahifa" data-ru="Главная"
+                    <li class="nav-item"><a class="nav-link" href="#bosh" data-uz="Bosh sahifa" data-ru="Главная"
                             data-en="Home">Bosh sahifa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Biz haqimizda" data-ru="О нас"
+                    <li class="nav-item"><a class="nav-link" href="#biz" data-uz="Biz haqimizda" data-ru="О нас"
                             data-en="About">Biz haqimizda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Mahsulotlar" data-ru="Продукты"
+                    <li class="nav-item"><a class="nav-link" href="#mahsulot" data-uz="Mahsulotlar" data-ru="Продукты"
                             data-en="Products">Mahsulotlar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Blog" data-ru="Блог"
+                    <li class="nav-item"><a class="nav-link" href="#blog" data-uz="Blog" data-ru="Блог"
                             data-en="Blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-uz="Aloqa" data-ru="Контакты"
+                    <li class="nav-item"><a class="nav-link" href="#aloqa" data-uz="Aloqa" data-ru="Контакты"
                             data-en="Contact">Aloqa</a></li>
                 </ul>
 
@@ -105,7 +105,7 @@
     <!-- End Header/Navigation -->
 
     <!-- Start Hero Section -->
-    <div class="hero py-5">
+    <div id="bosh" class="hero py-5">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-5">
@@ -125,7 +125,7 @@
                         </p>
 
                         <p>
-                            <a href="#" class="btn btn-secondary me-2" data-uz="Mahsulotlar" data-ru="Продукты"
+                            <a href="#mahsulot" class="btn btn-secondary me-2" data-uz="Mahsulotlar" data-ru="Продукты"
                                 data-en="Products">
                                 Mahsulotlar
                             </a>
@@ -145,7 +145,7 @@
 
     <!-- Start Product Section -->
     <!-- === Biz haqimizda bo‘limi === -->
-    <div class="product-section py-5">
+    <div id="biz" class="product-section py-5">
         <div class="container">
             <div class="row">
 
@@ -169,10 +169,7 @@
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                     <a class="product-item" href="#">
                         <img src="/media/haqida2.jpg" class="img-fluid product-thumbnail" alt="Product 1">
-                        <h3 class="product-title" data-uz="Nordik stul" data-ru="Скандинавский стул"
-                            data-en="Nordic Chair">
-                            Nordic Chair
-                        </h3>
+                        
                     </a>
                 </div>
                 <!-- End Column 2 -->
@@ -181,10 +178,7 @@
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                     <a class="product-item" href="#">
                         <img src="/media/haqida.jpg" class="img-fluid product-thumbnail" alt="Product 2">
-                        <h3 class="product-title" data-uz="Kruzo Aero stul" data-ru="Крузо Аэро стул"
-                            data-en="Kruzo Aero Chair">
-                            Kruzo Aero Chair
-                        </h3>
+                        
                     </a>
                 </div>
                 <!-- End Column 3 -->
@@ -194,10 +188,7 @@
                     <a class="product-item" href="#">
                         <img src="/media/photo_2025-10-10_11-54-19.jpg" class="img-fluid product-thumbnail"
                             alt="Product 3">
-                        <h3 class="product-title" data-uz="Ergonomik stul" data-ru="Эргономичный стул"
-                            data-en="Ergonomic Chair">
-                            Ergonomic Chair
-                        </h3>
+                        
                     </a>
                 </div>
                 <!-- End Column 4 -->
@@ -208,7 +199,7 @@
 
 
     <!-- End Product Section -->
-    <section class="products" id="products">
+    <section id = "mahsulot" class="products" id="products">
         <h2 data-uz="Mahsulotlar" data-ru="Продукты" data-en="Products">Mahsulotlar</h2>
         <div class="product-container">
             {% for product in products %}
@@ -390,7 +381,7 @@
         </div>
     </section>
     <!-- Start We Help Section -->
-    <div class="we-help-section py-5">
+    <div id="blog" class="we-help-section py-5">
         <div class="container">
             <div class="row justify-content-between align-items-center">
 
@@ -398,7 +389,7 @@
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="imgs-grid">
                         <div class="grid grid-1">
-                            <img src="../media/111.jpeg" alt="Hunarmand Image 1" class="img-fluid">
+                            <img src="../media/bola.jpg" alt="Hunarmand Image 1" class="img-fluid">
                         </div>
                         <div class="grid grid-2">
                             <img src="../media/777.jpeg" alt="Hunarmand Image 2" class="img-fluid">
@@ -459,7 +450,7 @@
 
     <!-- End Testimonial Slider -->
     <!-- 📩 Contact -->
-    <section id="contact" class="contact">
+    <section id="aloqa" id="contact" class="contact">
         <h2 id="murajat" data-uz="Murojat uchun" data-ru="Контакты" data-en="Contact">Murojaat uchun</h2>
         <p class="contact-text"
             data-uz="Quyidagi forma orqali biz bilan bog‘laning yoki taklif va savollaringizni yuboring."
